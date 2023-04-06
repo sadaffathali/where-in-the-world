@@ -1,5 +1,6 @@
 <template>
-    <h1>
-        test
-    </h1>
+    <div>
+        <Header />
+        <Nuxt />
+    </div>
 </template>
