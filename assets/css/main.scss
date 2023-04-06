@@ -4,13 +4,14 @@ body {
   padding: 0;
   background-color: hsl(0, 0%, 98%);
   color: hsl(200, 15%, 8%);
+  transition: all 0.2s;
 }
 
 .dark-blue {
   color: hsl(200, 15%, 8%);
 }
 .bg-white {
-  background-color: white;
+  background-color: hsl(0, 0%, 100%);
 }
 a {
   text-decoration: none;
@@ -19,7 +20,7 @@ a {
 .flag_container {
   position: relative;
   width: 100%;
-  padding-top: 75%;
+  padding-top: 56.25%; // 16:9 Aspect Ratio
   .flag {
     position: absolute;
     top: 0;

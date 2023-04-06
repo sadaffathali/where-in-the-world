@@ -1,5 +1,8 @@
 <template>
   <div class="homepage_content">
+    <!-- <p @click="sortPopulation">
+      test
+    </p> -->
     <Filters :input="input" @search="input = $event" />
     <section class="countries__holder">
       <Country :country="country" :key="country.name.common" v-for="country in filterCounties" />
@@ -13,6 +16,7 @@
 import Country from '~/components/HomePage/Country';
 import Filters from '~/components/HomePage/Filters';
 import EmptyMsg from '~/components/EmptyMsg';
+import axios from 'axios';
 
 export default {
   components: {
@@ -24,6 +28,9 @@ export default {
     return {
       input: '',
       allData: [],
+      isSortPopulation: true,
+      isSortByName: true
+
     }
   },
   computed: {
@@ -31,17 +38,42 @@ export default {
       return this.countries.filter(
         (data) =>
           !this.input ||
-          data.name.official.toLowerCase().includes(this.input)
+          data.name.common.toLowerCase().includes(this.input) || data.name.common.toLowerCase().replace(/[aeiou]/gi, '').includes(this.input)
       )
+    },
+
+  },
+  methods: {
+    sortPopulation() {
+      this.countries.sort(function (a, b) {
+        return b.population - a.population;
+      });
+    },
+    sortByName() {
+      return this.countries.sort((a, b) => {
+        if (a.name.common < b.name.common)
+          return -1;
+        if (a.name.common > b.name.common)
+          return 1;
+        return 0;
+      })
     }
   },
-  async asyncData({ $axios }) {
-    const countries = await $axios.$get('https://restcountries.com/v3.1/all')
-    return { countries }
+  async asyncData(context) {
+    return axios.get('https://restcountries.com/v3.1/all')
+      .then(res => {
+        return {
+          countries: res.data
+        }
+      })
+      .catch(e => {
+        context.error(e);
+      })
+
   },
   created() {
     if (this.$route.query.search != undefined) {
-      this.input = this.$route.query.search;
+      this.input = this.$route.query.search.toLowerCase();
     }
   }
 }
@@ -50,24 +82,24 @@ export default {
 .countries__holder {
   display: grid;
   gap: 2rem;
+  padding: 0 3rem;
 
 }
 
 .homepage_content {
   display: flex;
   flex-flow: column wrap;
-  padding: 0 3rem;
+
 }
 
 @media (min-width: 1024px) {
   .countries__holder {
     grid-template-columns: repeat(4, 1fr);
     gap: 4rem;
-
-  }
-
-  .homepage_content {
     padding: 0 5rem;
+
   }
+
+
 }
 </style>

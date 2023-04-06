@@ -1,11 +1,11 @@
 <template>
     <header class="bg-white">
         <h1 class="dark-blue">
-            Where in the world?
+            <nuxt-link to="/">
+                Where in the world?
+            </nuxt-link>
         </h1>
-        <div class="mode">
-
-        </div>
+        <ModeDisplay />
     </header>
 </template>
 <style lang="scss" scoped>
@@ -14,7 +14,7 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: 1px 1px 10px 1px hsl(0, 0%, 89.12%);
-    padding: 1rem 0.8rem;
+    padding: 1.5rem 0.8rem;
 
     h1 {
         font-size: 20px;

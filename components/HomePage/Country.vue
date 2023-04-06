@@ -1,24 +1,23 @@
 <template>
     <NuxtLink :to="`country/${country.cca2}`" class="country__item bg-white">
         <div class="flag_container">
-            <img class="flag" :src="country.flags.png" :alt="country.name.official" loading="lazy">
+            <img class="flag" :src="country.flags.png" :alt="country.name.common" loading="lazy">
         </div>
         <div class="country__details">
             <h2 class="dark-blue">
-                {{ country.name.official }}
+                {{ country.name.common }}
             </h2>
-            <div class="more_detail">
-                <span>Population:</span>
-                <span class="detail"> {{ country.population | numberFormatter }} </span>
-            </div>
-            <div class="more_detail">
-                <span>Region:</span>
-                <span class="detail"> {{ country.region }} </span>
-            </div>
-            <div class="more_detail">
-                <span>Capital:</span>
+
+            <CountryDetail title="Population">
+                {{ country.population | numberFormatter }}
+            </CountryDetail>
+            <CountryDetail title="Region">
+                {{ country.region }}
+            </CountryDetail>
+            <CountryDetail title="Capital">
                 <span class="detail" v-for="c in country.capital"> {{ c }} </span>
-            </div>
+            </CountryDetail>
+
         </div>
 
     </NuxtLink>
@@ -37,8 +36,15 @@ export default {
 <style lang="scss" scoped>
 .country__item {
     border-radius: 7px;
-    overflow: hidden;
+    // overflow: hidden;
     box-shadow: 1px 1px 10px 1px hsl(0, 0%, 89.12%);
+
+    .flag_container {
+        img {
+            border-top-right-radius: 7px;
+            border-top-left-radius: 7px;
+        }
+    }
 
     .country__details {
         display: flex;
@@ -52,20 +58,6 @@ export default {
             margin-bottom: 1rem;
         }
 
-        .more_detail {
-            &:not(:last-child) {
-                margin-bottom: 8px;
-            }
-
-            font-size: 14px;
-            font-weight: 600;
-
-            .detail {
-                font-weight: 300;
-                margin-left: 3px;
-            }
-        }
-
     }
 }
 
@@ -73,5 +65,6 @@ export default {
     .country__item {
         box-shadow: 1px 1px 10px 1px hsl(210deg 19.98% 13.94% / 55%);
     }
+
 }
 </style>

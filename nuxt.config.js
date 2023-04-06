@@ -19,7 +19,7 @@ export default {
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/icon?family=Material+Icons",
+        href: "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined",
       },
     ],
   },
