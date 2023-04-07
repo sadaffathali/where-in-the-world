@@ -13,7 +13,7 @@
                 {{ country.region }}
             </CountryDetail>
             <CountryDetail title="Capital">
-                {{ Object.values(country.capital)[0] }}
+                {{ country.capital != undefined && country.capital != null ? Object.values(country.capital)[0] : '' }}
             </CountryDetail>
 
         </div>
