@@ -1,6 +1,12 @@
-# alibaba-task
+# 
 
-## Build Setup
+## Description 
+This project is a frontend application built with ٔNuxt.js that allows users to search for countries by name, sort the results by population or country name and filter them by the region. [demo](https://where-in-the-world-alibaba.netlify.app/).
+
+
+To use this application, simply run the following commands:
+
+## Usage
 
 ```bash
 # install dependencies
@@ -17,10 +23,8 @@ $ yarn start
 $ yarn generate
 ```
 
-Serve on the [Where-in-the-world](https://where-in-the-world-alibaba.netlify.app/).
 
-
-## Description 
+## Features 
 - Used pure CSS and SCSS to implement the demo 
 - Allows searching using country names with or without all of their vowel letters
 - Provides sort functionality for population and country name
@@ -31,3 +35,12 @@ Serve on the [Where-in-the-world](https://where-in-the-world-alibaba.netlify.app
 - Includes unit tests for components for easy deployment
 - Stores the filters in the URL query parameters and syncs them with the component filter object
 - Uses lazy loading for country images [Document](https://web.dev/browser-level-image-lazy-loading/)
+
+
+## Deployment
+To deploy this application using Docker, you can use the included Dockerfile. Simply run the following commands:
+```bash
+$ docker build -t alibaba-task .
+$ docker run -p 3000:3000 alibaba-task
+```
+
