@@ -1,6 +1,14 @@
 <template>
     <div class="country__page">
+        <div class="back">
+            <Button link="/" size="big">
+                <span class="material-icons-outlined icon">
+                    west
+                </span>
+                Back
 
+            </Button>
+        </div>
         <div class="flag_container">
             <img class="flag" :src="country.flags.png" :alt="country.name.common" loading="lazy">
         </div>
@@ -86,8 +94,14 @@ export default {
 <style scoped lang="scss">
 .country__page {
     display: grid;
-    padding: 1.5rem 0.8rem;
+    padding: 2rem;
     align-items: center;
+    row-gap: 3rem;
+    column-gap: 6rem;
+
+    h1 {
+        margin-top: 0;
+    }
 }
 
 .detail_holder {
@@ -97,15 +111,31 @@ export default {
 
 .border_countries {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
+
     align-items: center;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
+
+    .more_detail {
+        gap: 15px;
+    }
+}
+
+.back {
+    display: flex;
+    align-items: flex-start;
+
+    .icon {
+        font-weight: 300;
+        margin-right: 10px;
+    }
 }
 
 @media (min-width: 1024px) {
     .country__page {
         grid-template-columns: repeat(2, 1fr);
-        gap: 4rem;
+        row-gap: 4rem;
+        column-gap: 6rem;
         padding: .5rem 5rem;
         margin: 4rem 0;
     }
@@ -121,6 +151,12 @@ export default {
 
     .border_countries {
         margin-top: 3rem;
+        flex-flow: row wrap;
+    }
+
+    .back {
+        grid-column: span 2;
+
     }
 
 

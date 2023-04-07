@@ -1,5 +1,5 @@
 <template>
-    <nuxt-link :to="link" class="bg-white">
+    <nuxt-link :to="link" :class="`bg-white ${size}`">
         <slot></slot>
     </nuxt-link>
 </template>
@@ -8,6 +8,9 @@ export default {
     props: {
         link: {
             type: String, required: true, default: '/'
+        },
+        size: {
+            type: String, required: false, default: 'default'
         }
     }
 }
@@ -15,16 +18,39 @@ export default {
 <style scoped lang="scss">
 a {
     text-transform: capitalize;
-    width: 70px;
+
     text-align: center;
-    padding: 4px 0;
-    box-shadow: 1px 1px 10px 1px hsl(0, 0%, 89.12%);
-    border-radius: 4px;
+
+    box-shadow: 1px 1px 5px 1px hsl(0, 0%, 89.12%);
+
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+
+    &.default,
+    &.big {
+        padding: 4px 30px;
+        border-radius: 2px;
+    }
+
+
+
+}
+
+@media (min-width: 1024px) {
+    a {
+        &.big {
+            font-size: 16px;
+            padding: 7px 35px;
+            border-radius: 5px;
+        }
+    }
 }
 
 .dark {
     a {
-        box-shadow: 1px 1px 10px 1px hsl(210deg 19.98% 13.94% / 55%);
+        box-shadow: 0 0 5px 1px hsl(210deg 16.12% 9.4% / 72%);
+        color: hsl(0, 0%, 80%);
     }
 }
 </style>
