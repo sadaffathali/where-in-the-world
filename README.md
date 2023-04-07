@@ -1,6 +1,6 @@
 
 ## Description 
-This project is a frontend application built with ٔNuxt.js that allows users to search for countries by name, sort the results by population or country name and filter them by the region. [demo](https://where-in-the-world-alibaba.netlify.app/).
+This project is a frontend application built with Nuxt.js that allows users to search for countries by name, sort the results by population or country name and filter them by the region. [demo](https://where-in-the-world-alibaba.netlify.app/).
 
 # 
 
