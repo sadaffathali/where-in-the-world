@@ -6,12 +6,10 @@
                     west
                 </span>
                 Back
-
             </Button>
         </div>
-        <div class="flag_container">
-            <img class="flag" :src="country.flags.png" :alt="country.name.common" loading="lazy">
-        </div>
+        <Flag :src="country.flags.png" :alt="country.name.common" />
+
         <div class="">
             <h1 class="dark-blue">
                 {{ country.name.common }}
@@ -49,17 +47,13 @@
                 </div>
             </div>
 
-            <div class="border_countries">
+            <div class="border_countries" v-if="country.borders">
                 <CountryDetail title="border countries">
                     <Button :key="i" v-for="(border, i) in country.borders" :link="border.toLowerCase()">
                         {{ border.toLowerCase() }}
                     </Button>
                 </CountryDetail>
             </div>
-
-
-
-
         </div>
     </div>
 </template>
@@ -71,11 +65,9 @@ export default {
     asyncData(context) {
         return axios.get('https://restcountries.com/v3.1/alpha/' + context.params.id)
             .then(res => {
-                // this.$gtag.pageview(this.$route);
                 return {
                     country: res.data[0]
                 }
-
             })
             .catch(e => {
                 context.error(e);
@@ -86,7 +78,6 @@ export default {
             let langs = "";
             Object.values(this.country.languages).forEach(val => langs = val + ', ' + langs);
             return langs;
-
         }
     }
 };

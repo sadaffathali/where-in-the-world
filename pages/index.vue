@@ -1,9 +1,10 @@
 <template>
   <div class="homepage_content">
-    <!-- <p @click="sortPopulation">
-      test
-    </p> -->
-    <Filters :input="input" @search="input = $event" />
+
+    <Filters @sortPopulation="sortPopulation($event)" @sortByName="sortByName($event)"
+      :isSortPopulation="isSortPopulation" :isSortByName="isSortByName" :input="input" @search="input = $event"
+      @region="filterRegion($event)" />
+
     <section class="countries__holder">
       <Country :country="country" :key="country.name.common" v-for="country in filterCounties" />
       <EmptyMsg v-if="filterCounties.length == 0" />
@@ -29,7 +30,8 @@ export default {
       input: '',
       allData: [],
       isSortPopulation: true,
-      isSortByName: true
+      isSortByName: true,
+      selectedRegion: ''
 
     }
   },
@@ -37,26 +39,32 @@ export default {
     filterCounties() {
       return this.countries.filter(
         (data) =>
-          !this.input ||
-          data.name.common.toLowerCase().includes(this.input) || data.name.common.toLowerCase().replace(/[aeiou]/gi, '').includes(this.input)
+          (!this.input ||
+            data.name.common.toLowerCase().includes(this.input) || data.name.common.toLowerCase().replace(/[aeiou]/gi, '').includes(this.input)) && data.region.toLowerCase().includes(this.selectedRegion)
       )
     },
 
   },
   methods: {
-    sortPopulation() {
+    sortPopulation(type) {
+      this.isSortPopulation = type;
       this.countries.sort(function (a, b) {
-        return b.population - a.population;
+        return (type ? b.population - a.population : a.population - b.population);
       });
     },
-    sortByName() {
+    sortByName(type) {
+      this.isSortByName = type;
       return this.countries.sort((a, b) => {
-        if (a.name.common < b.name.common)
+        if (type ? a.name.common < b.name.common : a.name.common > b.name.common)
           return -1;
-        if (a.name.common > b.name.common)
+        if (type ? a.name.common > b.name.common : a.name.common > b.name.common)
           return 1;
         return 0;
       })
+    },
+    filterRegion(region) {
+      this.selectedRegion = region;
+
     }
   },
   async asyncData(context) {
@@ -75,6 +83,17 @@ export default {
     if (this.$route.query.search != undefined) {
       this.input = this.$route.query.search.toLowerCase();
     }
+    if (this.$route.query.sortPopulation != undefined) {
+      this.$route.query.sortPopulation.toLowerCase() == 'true' ? this.isSortPopulation = true : this.isSortPopulation = false
+      this.sortPopulation(this.isSortPopulation)
+    }
+    if (this.$route.query.sortName != undefined) {
+      this.$route.query.sortName.toLowerCase() == 'true' ? this.isSortByName = true : this.isSortByName = false;
+      this.sortByName(this.isSortByName)
+    }
+    if (this.$route.query.region != undefined) {
+      this.selectedRegion = this.$route.query.region.toLowerCase();
+    }
   }
 }
 </script>
@@ -83,14 +102,9 @@ export default {
   display: grid;
   gap: 2rem;
   padding: 0 3rem;
-
+  align-items: center;
 }
 
-.homepage_content {
-  display: flex;
-  flex-flow: column wrap;
-
-}
 
 @media (min-width: 1024px) {
   .countries__holder {

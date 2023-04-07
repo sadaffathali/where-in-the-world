@@ -17,23 +17,17 @@ a {
   text-decoration: none;
   color: inherit;
 }
-.flag_container {
-  position: relative;
-  width: 100%;
-  padding-top: 75%; // 4:3 Aspect Ratio
-  .flag {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.box-shadow {
+  box-shadow: 1px 1px 10px 1px hsl(0, 0%, 89.12%);
 }
 
 .dark {
   body {
     background-color: hsl(207, 26%, 17%);
     color: hsl(0, 0%, 100%);
+  }
+  .box-shadow {
+    box-shadow: 1px 1px 10px 1px hsl(210deg 19.98% 13.94% / 55%);
   }
   .dark-blue {
     color: hsl(0, 0%, 100%);

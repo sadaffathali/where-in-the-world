@@ -1,8 +1,6 @@
 <template>
-    <NuxtLink :to="`country/${country.cca2}`" class="country__item bg-white">
-        <div class="flag_container">
-            <img class="flag" :src="country.flags.png" :alt="country.name.common" loading="lazy">
-        </div>
+    <NuxtLink :to="`country/${country.cca2}`" class="country__item bg-white box-shadow">
+        <Flag :src="country.flags.png" :alt="country.name.common" />
         <div class="country__details">
             <h2 class="dark-blue">
                 {{ country.name.common }}
@@ -36,14 +34,8 @@ export default {
 <style lang="scss" scoped>
 .country__item {
     border-radius: 7px;
-    box-shadow: 1px 1px 10px 1px hsl(0, 0%, 89.12%);
+    overflow: hidden;
 
-    .flag_container {
-        img {
-            border-top-right-radius: 7px;
-            border-top-left-radius: 7px;
-        }
-    }
 
     .country__details {
         display: flex;
@@ -58,12 +50,5 @@ export default {
         }
 
     }
-}
-
-.dark {
-    .country__item {
-        box-shadow: 1px 1px 10px 1px hsl(210deg 19.98% 13.94% / 55%);
-    }
-
 }
 </style>

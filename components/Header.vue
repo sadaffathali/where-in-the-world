@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-white">
+    <header class="bg-white box-shadow">
         <h1 class="dark-blue">
             <nuxt-link to="/">
                 Where in the world?
@@ -13,7 +13,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 1px 1px 10px 1px hsl(0, 0%, 89.12%);
+
     padding: 1.5rem 0.8rem;
 
     h1 {
@@ -22,11 +22,6 @@ header {
     }
 }
 
-.dark {
-    header {
-        box-shadow: 1px 1px 10px 1px hsl(210deg 19.98% 13.94% / 55%);
-    }
-}
 
 @media (min-width: 1024px) {
     header {
