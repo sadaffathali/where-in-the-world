@@ -71,9 +71,11 @@ export default {
     asyncData(context) {
         return axios.get('https://restcountries.com/v3.1/alpha/' + context.params.id)
             .then(res => {
+                // this.$gtag.pageview(this.$route);
                 return {
                     country: res.data[0]
                 }
+
             })
             .catch(e => {
                 context.error(e);

@@ -36,7 +36,6 @@ export default {
 <style lang="scss" scoped>
 .country__item {
     border-radius: 7px;
-    // overflow: hidden;
     box-shadow: 1px 1px 10px 1px hsl(0, 0%, 89.12%);
 
     .flag_container {

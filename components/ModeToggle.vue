@@ -21,7 +21,13 @@ export default {
     methods: {
         changeMode() {
             this.theme = !this.theme;
-            document.getElementsByTagName('html')[0].classList.toggle('dark')
+            document.getElementsByTagName('html')[0].classList.toggle('dark');
+            this.$ga.event({
+                eventCategory: 'modeToggle',
+                eventAction: 'click',
+                eventLabel: 'clickMode'
+            })
+
 
         }
     }

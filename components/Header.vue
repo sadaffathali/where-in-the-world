@@ -5,7 +5,7 @@
                 Where in the world?
             </nuxt-link>
         </h1>
-        <ModeDisplay />
+        <ModeToggle />
     </header>
 </template>
 <style lang="scss" scoped>
