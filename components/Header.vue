@@ -17,7 +17,7 @@ header {
     padding: 1.5rem 0.8rem;
 
     h1 {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 800;
     }
 }
