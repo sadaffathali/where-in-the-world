@@ -85,12 +85,12 @@ export default {
     }
     if (this.$route.query.sortPopulation != undefined) {
       this.$route.query.sortPopulation.toLowerCase() == 'true' ? this.isSortPopulation = true : this.isSortPopulation = false
-      this.sortPopulation(this.isSortPopulation)
     }
+    this.sortPopulation(this.isSortPopulation)
     if (this.$route.query.sortName != undefined) {
       this.$route.query.sortName.toLowerCase() == 'true' ? this.isSortByName = true : this.isSortByName = false;
-      this.sortByName(this.isSortByName)
     }
+    this.sortByName(this.isSortByName)
     if (this.$route.query.region != undefined) {
       this.selectedRegion = this.$route.query.region.toLowerCase();
     }
