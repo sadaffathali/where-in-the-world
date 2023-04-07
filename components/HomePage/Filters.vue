@@ -10,16 +10,16 @@
 
         <div class="sort_holder">
             <div class="sort box-shadow bg-white" @click="setSortName">
+                Country Name
                 <span class="material-icons-outlined">
                     {{ sortByName ? 'expand_less' : 'expand_more' }}
                 </span>
-                Country Name
             </div>
             <div class="sort box-shadow bg-white" @click="setSortPopulation">
+                Population
                 <span class="material-icons-outlined">
                     {{ sortPopulation ? 'expand_less' : 'expand_more' }}
                 </span>
-                Population
             </div>
         </div>
 
@@ -147,6 +147,11 @@ export default {
             cursor: pointer;
             padding: .81rem 1rem;
             border-radius: 7px;
+
+            span {
+                font-size: 20px;
+                margin-left: 20px;
+            }
         }
 
     }
