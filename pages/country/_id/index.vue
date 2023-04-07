@@ -50,7 +50,7 @@
 
             <div class="border_countries" v-if="country.borders">
                 <CountryDetail title="border countries">
-                    <Button :key="i" v-for="(border, i) in country.borders" :link="border.toLowerCase()">
+                    <Button :key="i" v-for="(border, i) in country.borders" :link="`/${border.toLowerCase()}`">
                         {{ border.toLowerCase() }}
                     </Button>
                 </CountryDetail>
