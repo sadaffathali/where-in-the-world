@@ -13,7 +13,7 @@
                 {{ country.region }}
             </CountryDetail>
             <CountryDetail title="Capital">
-                <span class="detail" v-for="c in country.capital"> {{ c }} </span>
+                {{ Object.values(country.capital)[0] }}
             </CountryDetail>
 
         </div>

@@ -29,7 +29,7 @@
                         {{ country.subregion }}
                     </CountryDetail>
                     <CountryDetail title="capital">
-                        {{ country.capital[0] }}
+                        {{ Object.values(country.capital)[0] }}
                     </CountryDetail>
                 </div>
                 <div>
